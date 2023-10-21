@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Электронные часы</title>
+    <script>
+        function showTime() {
+            var date = new Date(); //новая дата
+            var hours = date.getHours(); //вернет часы и тд
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var timeString = convertToWords(hours)+":" + " " + convertToWords(minutes) +":"+ " " + convertToWords(seconds);
+
+            document.getElementById("time").innerHTML = timeString;
+        }
+        
+        function convertToWords(num) {
+            var words = "";
+            var units = ['ноль', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'];
+            var tens = ['', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят'];
+            
+            if (num < 20) {
+                words = units[num];
+            } else {
+                words = tens[Math.floor(num / 10)] + " " + units[num % 10];
+            }
+
+            return words;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showTime()">Показать время</button>
+    <p id="time"></p>
+</body>
+</html>
